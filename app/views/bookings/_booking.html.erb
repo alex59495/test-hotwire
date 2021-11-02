@@ -1,0 +1,8 @@
+<div class="card-booking">
+  <p>Réservation <%= booking.room.name %></p>
+  <p>Du : <%= booking.start_date.strftime("%d%m%y") %></p>
+  <p>Au : <%= booking.end_date.strftime("%d%m%y") %></p>
+  <div class="d-flex">
+    <%= link_to "Edit", edit_room_booking_path(booking.room, booking) %>
+  </div>
+</div>

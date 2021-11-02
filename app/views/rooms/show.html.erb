@@ -1,0 +1,9 @@
+<%= render @room %>
+
+<%= simple_form_for [@room, @booking] do |f| %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :end_date, as: :date %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Back", rooms_path, class: 'btn btn-secondary' %>

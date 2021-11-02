@@ -1,0 +1,8 @@
+<%= turbo_frame_tag @room do %>
+  <%= simple_form_for @room, id: dom_id(@room) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :beds %>
+    <%= f.submit "Validate", class: 'btn btn-primary' %>
+  <% end %>
+  <%= link_to "Back", rooms_path, class: 'btn btn-secondary' %>
+<% end %>
