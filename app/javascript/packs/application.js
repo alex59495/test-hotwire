@@ -6,6 +6,7 @@
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "@hotwired/turbo-rails"
+import "../controllers"
 import "bootstrap"
 
 ActiveStorage.start()

@@ -23,10 +23,12 @@ class RoomsController < ApplicationController
     @room = Room.new(params_room)
     @room.user = current_user
     authorize @room
+    binding.pry
+
     respond_to do |format|
       if @room.save
         format.html { redirect_to rooms_path }
-        # format.turbo_stream { render turbo_stream: turbo_stream.prepend('rooms', @room, locals: { current_user: current_user, room: @room }) }
+        format.turbo_stream { render turbo_stream: turbo_stream.prepend('rooms', @room, locals: { current_user: current_user, room: @room }) }
       else
         format.turbo_stream { render turbo_stream: turbo_stream.replace(@room, partial: 'rooms/form', locals: { room: @room }) }
       end
@@ -53,7 +55,7 @@ class RoomsController < ApplicationController
   private
 
   def params_room
-    params.require(:room).permit(:beds, :name)
+    params.require(:room).permit(:beds, :name, :accomodation_type)
   end
 
   def find_room

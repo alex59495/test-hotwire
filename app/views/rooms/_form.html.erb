@@ -1,7 +1,8 @@
 <%= turbo_frame_tag @room do %>
-  <%= simple_form_for @room, id: dom_id(@room) do |f| %>
+  <%= simple_form_for @room, id: dom_id(@room), data: { controller: 'form', action: 'turbo:submit-end->form#reset' } do |f| %>
     <%= f.input :name %>
     <%= f.input :beds %>
+    <%= f.input :accomodation_type, collection: Accomodation::TYPES.map {|key, value| [value, key] }, selected: Accomodation::TYPES.assoc(@room.accomodation_type.key) || Accomodation::TYPES.first %>
     <%= f.submit "Validate", class: 'btn btn-primary' %>
   <% end %>
   <%= link_to "Back", rooms_path, class: 'btn btn-secondary' %>

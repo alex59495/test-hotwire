@@ -1,7 +1,6 @@
 <%= turbo_frame_tag "new_room" do %>
-  <%= link_to 'Create a new room', new_room_path %>
+  <%= link_to 'Create a new room', new_room_path, class: 'btn btn-primary' %>
 <% end %>
-
 <%= turbo_stream_from "rooms" %>
 <%= turbo_frame_tag "rooms" do %>
   <%= render @rooms %>

@@ -1,13 +1,16 @@
 <%= turbo_frame_tag dom_id(room) do %>
   <div class="card-room">
-    <p><%= room.name %></p>
-    <p><%= room.beds %></p>
-    <%= link_to "Show", room_path(room), target: "_top", class: 'btn btn-primary' %>
-    <% if room.user == current_user %>
-      <%= link_to "Edit", edit_room_path(room), class: 'btn btn-warning' %>
-    <% end %>
-    <% if room.user == current_user %>
-      <%= button_to "Delete", room, method: :delete, class: 'btn btn-danger' %>
+    <p>Name : <%= room.name %></p>
+    <p>Type of accomodation : <%= room.accomodation %></p>
+    <p>Number of beds : <%= room.beds %></p>
+    <% if params[:action] != 'show' %>
+      <%= link_to "Show", room_path(room), target: "_top", class: 'btn btn-primary' %>
+      <% if room.user == current_user %>
+        <%= link_to "Edit", edit_room_path(room), class: 'btn btn-warning' %>
+      <% end %>
+      <% if room.user == current_user %>
+        <%= button_to "Delete", room, method: :delete, class: 'btn btn-danger' %>
+      <% end %>
     <% end %>
   </div>
 <% end %>

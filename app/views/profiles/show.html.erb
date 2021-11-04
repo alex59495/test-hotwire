@@ -1,6 +1,9 @@
 <h1>My profile</h1>
 <%= @user.email %>
 
-<% @user.bookings.each do |booking| %>
-  <%= render 'bookings/booking', booking: booking %>
+<%= turbo_stream_from 'bookings' %>
+<%= turbo_frame_tag 'bookings' do %>
+  <% @user.bookings.each do |booking| %>
+    <%= render 'bookings/booking', booking: booking %>
+  <% end %>
 <% end %>

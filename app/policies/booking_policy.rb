@@ -6,10 +6,19 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user == user
+    my_own?
   end
 
   def update?
+    my_own?
+  end
+
+  def destroy?
+    my_own?
+  end
+
+  private
+  def my_own?
     record.user == user
   end
 end
